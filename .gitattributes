@@ -1,0 +1,2 @@
+# Consistency: convert to LF on input and always checkout LF for all auto-detected-as-text files
+* text=auto eol=lf
