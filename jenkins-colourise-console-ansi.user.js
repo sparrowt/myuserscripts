@@ -2,7 +2,7 @@
 // @name         Jenkins console: colourise ANSI escape sequences
 // @namespace    https://github.com/sparrowt
 // @homepage     https://github.com/sparrowt/myuserscripts
-// @version      0.2
+// @version      0.3
 // @description  Use HTML to colourise ANSI colour escape sequences in Jenkins console output e.g. from PowerShell warnings
 // @author       Tom Sparrow
 // @updateURL    https://github.com/sparrowt/myuserscripts/raw/main/jenkins-colourise-console-ansi.user.js
@@ -40,19 +40,18 @@ const colourMappings = [
     ["96", "cyan"],
 ];
 
+// Some custom replacements to do before the main colour ones
+const initialReplacements = [
+    // Avoid highlighting PowerShell VERBOSE output as yellow otherwise it looks like a WARNING
+    [new RegExp(`\u001b\\[33;1m(VERBOSE:.*)\u001b\\[0m`, "g"), `<span style="color:grey">$1</span>`],
+]
+
 // One-time setup For each colour code, construct the regex pattern & replacement once
 const colourReplacements = colourMappings.map((pair) => {
     var pattern = new RegExp(`\u001b\\[${pair[0]}(;1)?m([^\u001b]+)\u001b\\[0m`, "g");
     var replacement = `<span style="color:${pair[1]}">$2</span>`;
     return [pattern, replacement];
 });
-
-// Some custom replacements to do before the main colour ones
-const initialReplacements = [
-    // Avoid highlighting PowerShell VERBOSE output as yellow otherwise it looks like a WARNING
-    [new RegExp(`\u001b\\[33;1m(VERBOSE:.*)\u001b\\[0m`, "g"), `<span style="color:grey">$1</span>`],
-    [new RegExp(`(Encountered exception:)`, "g"), `<span style="color:red">$1</span>`],
-]
 
 const replacements = initialReplacements.concat(colourReplacements);
 
