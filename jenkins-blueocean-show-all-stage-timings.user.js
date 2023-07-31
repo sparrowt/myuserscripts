@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 function getElements() {
-    return document.querySelectorAll('g.PWGx-pipeline-node');
+    return document.querySelectorAll('g.PWGx-pipeline-node, g.PWGx-pipeline-node-selected');
 }
 
 function process() {
