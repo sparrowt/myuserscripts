@@ -6,7 +6,7 @@
 // @description  Use HTML to colourise ANSI colour escape sequences in Jenkins console output e.g. from PowerShell warnings
 // @author       Tom Sparrow
 // @updateURL    https://github.com/sparrowt/myuserscripts/raw/main/jenkins-colourise-console-ansi.user.js
-// @match        https://yourjenkinsinstance.example.net/*/console
+// @match        https://yourjenkinsinstance.example.net/*/console*
 // ==/UserScript==
 
 /*
