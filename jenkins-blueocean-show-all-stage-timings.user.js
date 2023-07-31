@@ -25,7 +25,9 @@ function process() {
             label.textContent = durationText;
             label.setAttribute('x', '15');
             label.setAttribute('y', '-5');
-            label.setAttribute('style', 'font-size: 9px; fill: blue;');
+            // Different colour if it is less than 1 minute
+            var textColour = durationText.indexOf('m') == -1 ? 'grey' : 'blue'
+            label.setAttribute('style', `font-size: 10px; fill: ${textColour};`);
             el.appendChild(label);
         }
     });
