@@ -2,11 +2,11 @@
 // @name         Jenkins show all stage timings in Blue Ocean view
 // @namespace    https://github.com/sparrowt
 // @homepage     https://github.com/sparrowt/myuserscripts
-// @version      0.3
+// @version      0.4
 // @description  Show all stage timings without having to click on each stage
 // @author       Tom Sparrow
 // @updateURL    https://github.com/sparrowt/myuserscripts/raw/main/jenkins-blueocean-show-all-stage-timings.user.js
-// @match        https://yourjenkinsinstance.example.net/blue/*/pipeline*
+// @match        https://yourjenkinsinstance.example.net/blue/*/detail*
 // ==/UserScript==
 
 function getElements() {
@@ -38,7 +38,7 @@ function process() {
     'use strict';
     const initInterval = setInterval(() => {
         if (getElements()) {
-            setTimeout(process, 1000);
+            setTimeout(process, 1500);
             clearInterval(initInterval);
         }
     }, 500);
