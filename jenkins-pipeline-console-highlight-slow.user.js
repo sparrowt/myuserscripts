@@ -2,7 +2,7 @@
 // @name         Jenkins highlight slow steps in Pipeline Console
 // @namespace    https://github.com/sparrowt
 // @homepage     https://github.com/sparrowt/myuserscripts
-// @version      0.3
+// @version      0.4
 // @description  Highlight steps which took a significant amount of time in the Pipeline Console view
 // @author       sparrowt
 // @match        https://yourjenkinsinstance.example.net/*job/*/pipeline-overview/*
@@ -12,18 +12,26 @@
 
 function highlightSlowSteps() {
     document.getElementsBySelector('div.pgv-step-detail-header__actions > span').forEach(el => {
-        if (el.textContent.includes('hr')) {
+        if (/^\d+h( \d+m)?$/i.test(el.textContent)) {
             // At least 1 hour
-            el.style.color = 'red'
-        } else if (el.textContent.endsWith('m')) {
+            el.style.color = 'red';
+        } else if (/^\d+m$/i.test(el.textContent)) {
             // At least 10 mins
-            el.style.color = 'yellow'
-        } else if (/^\d+m \d+s/i.test(el.textContent)) {
+            el.style.color = 'yellow';
+        } else if (/^\d+m \d+s$/i.test(el.textContent)) {
             // At least 1 min
-            el.style.color = 'cyan'
-        } else if (/^\d\d+s/i.test(el.textContent)) {
+            el.style.color = 'cyan';
+        } else if (/^\d\d+s$/i.test(el.textContent)) {
             // At least 10 seconds
-            el.style.color = 'white'
+            el.style.color = 'white';
+        }
+    });
+
+    // Also highlight super-slow stages in the tree view on the left
+    document.getElementsBySelector('div.pgv-tree-item__description').forEach(el => {
+        if (/^\d+h( \d+m)?$/i.test(el.textContent)) {
+            // At least 1 hour
+            el.style.color = 'orange';
         }
     });
 }
