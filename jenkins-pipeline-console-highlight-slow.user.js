@@ -2,10 +2,11 @@
 // @name         Jenkins highlight slow steps in Pipeline Console
 // @namespace    https://github.com/sparrowt
 // @homepage     https://github.com/sparrowt/myuserscripts
-// @version      0.4
+// @version      0.5
 // @description  Highlight steps which took a significant amount of time in the Pipeline Console view
 // @author       sparrowt
 // @match        https://yourjenkinsinstance.example.net/*job/*/pipeline-overview/*
+// @match        https://yourjenkinsinstance.example.net/*job/*/stages/*
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==

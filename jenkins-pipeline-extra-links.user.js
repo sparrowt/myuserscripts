@@ -2,10 +2,11 @@
 // @name         Jenkins add links to pipeline graph header
 // @namespace    https://github.com/sparrowt
 // @homepage     https://github.com/sparrowt/myuserscripts
-// @version      0.2
+// @version      0.3
 // @description  Add useful shortcut links in the top bar of the Pipeline Graph View overview
 // @author       sparrowt
 // @match        https://yourjenkinsinstance.example.net/*/pipeline-overview/*
+// @match        https://yourjenkinsinstance.example.net/*/stages/*
 // @grant        none
 // ==/UserScript==
 
